@@ -30,33 +30,70 @@
 						<p:inputText value="#{actorView.actor.apellidoPaterno}"
 							required="true"
 							requiredMessage="Por favor, No olvides llenar un valor" />
-						<p:commandButton update="@form,crud" value="Guardar"
+						<p:commandButton update="@form,:fm" value="Guardar"
 							action="#{actorView.almacenar}" />
 					</p:panelGrid>
 				</p:panel>
 			</h:form>
 
 
-			<h:form id="crud">
-				<p:dataTable id="tbl" value="#{actorView.listaActor}" var="a"
+			<h:form id="fm">
+				<p:dataTable id="tbl" value="#{actorView.listaActor}" var="actor"
 					emptyMessage="Por el momento no hay informacion aqui..."
 					style="margin-top:50px;">
 					<p:column headerText="Nombre">
-						<p:outputLabel value="#{a.nombre}" />
+						<p:outputLabel value="#{actor.nombre}" />
 					</p:column>
 					<p:column headerText="Apellido Paterno">
-						<p:outputLabel value="#{a.apellidoPaterno}" />
+						<p:outputLabel value="#{actor.apellidoPaterno}" />
 					</p:column>
 					<p:column headerText="Apellido Materno">
-						<p:outputLabel value="#{a.apellidoMaterno}" />
+						<p:outputLabel value="#{actor.apellidoMaterno}" />
 					</p:column>
 					<p:column headerText="Eliminar" style="width:15%;">
-						<p:commandButton icon="ui-icon-trash"
-							action="#{actorView.eliminar(a)}" update="crud" />
-					</p:column> 
+						<p:commandButton id="btnDelete" icon="ui-icon-trash"
+							action="#{actorViewImpl.eliminar(actor)}">
+						</p:commandButton>
+					</p:column>
+					<p:column headerText="Opciones">
+						<p:commandButton id="btnEdit" update=":formDialog"
+							icon="fa fa-fw fa-pencil-square-o" onclick="PF('dlg1').show()"
+							actionListener="#{actorViewImpl.action_edit}">
+							<f:attribute name="selectedActor" value="#{actor}" />
+						</p:commandButton>
+					</p:column>
 				</p:dataTable>
 			</h:form>
+
+
+			<p:dialog id="dlg1" draggable="true" widgetVar="dlg1" modal="true"
+				width="500">
+				<h:form id="formDialog">
+					<p:panelGrid columns="2" cellspacing="4" cellpadding="2"
+						styleClass="ui-noborder">
+						<p:outputLabel value="Nombre:" />
+						<p:inputText value="#{actorViewImpl.selectedActor.nombre}"
+							required="true"
+							requiredMessage="Por favor, No olvides llenar un valor" />
+						<p:outputLabel value="A. Paterno:" />
+						<p:inputText
+							value="#{actorViewImpl.selectedActor.apellidoPaterno}"
+							required="true"
+							requiredMessage="Por favor, No olvides llenar un valor" />
+						<p:outputLabel value="A. Materno:" />
+						<p:inputText
+							value="#{actorViewImpl.selectedActor.apellidoPaterno}"
+							required="true"
+							requiredMessage="Por favor, No olvides llenar un valor" />
+						<p:commandButton update="@form,fm" value="Guardar"
+							action="#{actorView.actualizar}" />
+					</p:panelGrid>
+				</h:form>
+			</p:dialog>
 		</ui:define>
+
+
+
 
 		<ui:define name="footer">
 			<div align="center" style="font-size: 10">

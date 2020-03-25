@@ -7,9 +7,12 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
+import org.apache.logging.log4j.core.impl.Log4jLogEvent;
+import org.hibernate.HibernateException;
+import org.primefaces.context.RequestContext;
 import org.sii.core.utility.FacesUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.jialvarador.data.entity.Actor;
 import com.jialvarador.data.service.ActorService;
 
@@ -20,8 +23,17 @@ public class ActorViewImpl implements Serializable {
 
   //@Autowired
   private ActorService actorService;
+  
+  private Actor selectedActor;
 
-  private Actor actor;
+  public Actor getSelectedActor() {
+	return selectedActor;
+}
+
+public void setSelectedActor(Actor selectedActor) {
+	this.selectedActor = selectedActor;
+}
+private Actor actor;
 
   private String buttonAction;
 
@@ -57,13 +69,33 @@ public class ActorViewImpl implements Serializable {
     return null;
   }
   
-  public String eliminar(Actor actorE) {
-    actorService.deleteActor(actorE);
-    inicializar();
-    FacesUtils.addInfoMessage("Ha sido eliminado");
-    return null; 
+  public String actualizar(Actor actor1) {
+	    actorService.updateActor(actor1);
+	    info();
+	    inicializar();
+	    return null;
+	  }
+  
+  public String eliminar(Actor actor1) {
+	System.out.println("--> "+actor1);
+	try {
+    actorService.deleteActor(actor1);
+    }catch(HibernateException ex) {
+    	System.out.println(ex.getMessage());
+    }
+    //inicializar();
+    //FacesUtils.addInfoMessage("Ha sido eliminado");
+    return ""; 
   }
   
+  public String action_edit(ActionEvent evt) {
+      selectedActor = (Actor) (evt.getComponent().getAttributes().get("selectedActor"));
+      System.out.println("--> "+selectedActor.getNombre());
+      //RequestContext context = RequestContext.getCurrentInstance();
+      //context.execute("PF('dlg1').show();");
+      actorService.updateActor(selectedActor);
+      return "";
+  }
   public String deleteArticle(Actor actor) {
     actorService.deleteActor(actor);
     this.setButtonAction("Guardar");

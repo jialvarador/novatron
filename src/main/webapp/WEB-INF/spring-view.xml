@@ -9,7 +9,7 @@
 	<bean id="actorView"
 		class="com.jialvarador.view.impl.ActorViewImpl">
 		<property name="actorService">
-			<ref bean="actorService"></ref>
+			<ref bean="actorService"/>
 		</property>
 	</bean>
 
