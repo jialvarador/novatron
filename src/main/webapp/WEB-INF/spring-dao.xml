@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Capa de persistencia de datos -->
+
+	<bean id="actorDAO" class="com.jialvarador.dao.impl.ActorDAOImpl" />
+	<bean id="usuarioDAO"
+		class="com.jialvarador.dao.impl.UsuarioDAOImpl"
+		autowire="constructor" />
+	<bean id="vehiculoDAO"
+		class="com.jialvarador.dao.impl.VehiculoDAOImpl" />
+	<bean id="rolDAO" class="com.jialvarador.dao.impl.RolDAOImpl" />
+	
+</beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--ManagedBean -->
+
+	<bean id="actorView"
+		class="com.jialvarador.view.impl.ActorViewImpl">
+		<property name="actorService">
+			<ref bean="actorService"></ref>
+		</property>
+	</bean>
+
+	<bean id="rolView" class="com.jialvarador.view.impl.RolViewImpl">
+		<property name="rolService">
+			<ref bean="rolService" />
+		</property>
+	</bean>
+
+	<bean id="usuarioView"
+		class="com.jialvarador.view.impl.UsuarioViewImpl">
+		<property name="usuarioService">
+			<ref bean="usuarioService" />
+		</property>
+	</bean>
+
+	<bean id="vehiculoView"
+		class="com.jialvarador.view.impl.VehiculoViewImpl">
+		<property name="vehiculoService">
+			<ref bean="vehiculoService" />
+		</property>
+	</bean>
+
+
+</beans>

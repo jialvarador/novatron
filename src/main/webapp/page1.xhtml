@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/template/common/commonLayout.xhtml">
+
+		<ui:define name="content">
+
+			<h:form>
+				<p:growl autoUpdate="true" showDetail="true" showSummary="true" />
+				<p:panel header="Formulario de registro">
+
+					<p:panelGrid columns="2" cellspacing="4" cellpadding="2"
+						styleClass="ui-noborder">
+						<p:outputLabel value="Nombre:" />
+						<p:inputText value="#{actorView.actor.nombre}" required="true"
+							requiredMessage="Por favor, No olvides llenar un valor" />
+						<p:outputLabel value="A. Paterno:" />
+						<p:inputText value="#{actorView.actor.apellidoPaterno}"
+							required="true"
+							requiredMessage="Por favor, No olvides llenar un valor" />
+						<p:outputLabel value="A. Materno:" />
+						<p:inputText value="#{actorView.actor.apellidoPaterno}"
+							required="true"
+							requiredMessage="Por favor, No olvides llenar un valor" />
+						<p:commandButton update="@form,crud" value="Guardar"
+							action="#{actorView.almacenar}" />
+					</p:panelGrid>
+				</p:panel>
+			</h:form>
+
+
+			<h:form id="crud">
+				<p:dataTable id="tbl" value="#{actorView.listaActor}" var="a"
+					emptyMessage="Por el momento no hay informacion aqui..."
+					style="margin-top:50px;">
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{a.nombre}" />
+					</p:column>
+					<p:column headerText="Apellido Paterno">
+						<p:outputLabel value="#{a.apellidoPaterno}" />
+					</p:column>
+					<p:column headerText="Apellido Materno">
+						<p:outputLabel value="#{a.apellidoMaterno}" />
+					</p:column>
+					<p:column headerText="Eliminar" style="width:15%;">
+						<p:commandButton icon="ui-icon-trash"
+							action="#{actorView.eliminar(a)}" update="crud" />
+					</p:column> 
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="footer">
+			<div align="center" style="font-size: 10">
+				<p>
+					Sistema demo. <br></br> Derechos Reservados © 2019 <br />Jose.
+				</p>
+				<p>Version online 1.6 - Ultima actualización 23 de marzo 2020</p>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!--Capa de Servicio -->
+
+	<bean id="actorService"
+		class="com.jialvarador.data.service.impl.ActorServiceImpl">
+		<property name="actorDAO">
+			<ref bean="actorDAO" />
+		</property>
+	</bean>
+	<bean id="rolService"
+		class="com.jialvarador.data.service.impl.RolServiceImpl" />
+	<bean id="usuarioService"
+		class="com.jialvarador.data.service.impl.UsuarioServiceImpl" />
+	<bean id="vehiculoService"
+		class="com.jialvarador.data.service.impl.VehiculoServiceImpl" />
+
+
+
+</beans>
