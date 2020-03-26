@@ -17,5 +17,11 @@
       <var>msgs</var>
     </resource-bundle>
   </application>
+  
+  <application>
+	  	<message-bundle>
+	  		com.mkyong.MyMessage
+	  	</message-bundle>
+     </application>
 
 </faces-config>

@@ -6,164 +6,126 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.apache.logging.log4j.core.impl.Log4jLogEvent;
 import org.hibernate.HibernateException;
-import org.primefaces.context.RequestContext;
 import org.sii.core.utility.FacesUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.jialvarador.data.entity.Actor;
 import com.jialvarador.data.service.ActorService;
 
 @ManagedBean
+@SessionScoped
 public class ActorViewImpl implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  //@Autowired
-  private ActorService actorService;
-  
-  private Actor selectedActor;
+	@Autowired
+	private ActorService actorService;
 
-  public Actor getSelectedActor() {
-	return selectedActor;
-}
+	private Actor selectedActor;
+	private Actor actor;
+	private List<Actor> listaActor;
 
-public void setSelectedActor(Actor selectedActor) {
-	this.selectedActor = selectedActor;
-}
-private Actor actor;
+	public ActorViewImpl() {
+		if (actor == null) {
+			actor = new Actor();
+		}
+	}
 
-  private String buttonAction;
+	public void inicializar() {
+		actor = new Actor();
+		selectedActor = new Actor();
+		listaActor = actorService.actorList();
+	}
 
-  private boolean editable;
+	
 
-  private List<Actor> listaActor;
+	public String almacenar() {
+		actorService.addActor(actor);
+		actor = new Actor();
+		FacesUtils.addInfoOnlyMessage("¡Accion exitosa!");
+		inicializar();
+		return null;
+	}
 
-  public ActorViewImpl() {    
-    if (actor == null) {
-      actor = new Actor();
-      this.setButtonAction("Guardar");
-      this.setEditable(false);
-    } else {
-      this.setButtonAction("Actualización");
-      this.setEditable(true);
-    }
-  }
+	public String actualizar() {
+		System.out.println("-2-> " + selectedActor.getNombre());
+		actorService.updateActor(selectedActor);
+		FacesUtils.addInfoOnlyMessage("¡Accion exitosa!");
+		inicializar();
+		return null;
+	}
 
-  public void inicializar() {
-    actor = new Actor();
-    listaActor = actorService.actorList();
-  }
+	public String eliminar(Actor actor1) {
+		System.out.println("--> " + actor1);
+		try {
+			actorService.deleteActor(actor1);
+		} catch (HibernateException ex) {
+			System.out.println("Error: " + ex.getMessage());
+		}
+		inicializar();
+		FacesUtils.addInfoMessage("Ha sido eliminado");
+		return "";
+	}
 
-  public List<Actor> getArticleList() {
-    return actorService.actorList();
-  }
+	public String action_edit(ActionEvent evt) {
+		selectedActor = (Actor) (evt.getComponent().getAttributes().get("selectedActor"));
+		System.out.println("--> " + selectedActor.getNombre());
+		// RequestContext context = RequestContext.getCurrentInstance();
+		// context.execute("PF('dlg1').show();");
+		// actorService.updateActor(selectedActor);
+		return "";
+	}
 
-  public String almacenar() {
-    actorService.addActor(actor);
-    actor = new Actor();
-    info();
-    inicializar();
-    return null;
-  }
-  
-  public String actualizar(Actor actor1) {
-	    actorService.updateActor(actor1);
-	    info();
-	    inicializar();
-	    return null;
-	  }
-  
-  public String eliminar(Actor actor1) {
-	System.out.println("--> "+actor1);
-	try {
-    actorService.deleteActor(actor1);
-    }catch(HibernateException ex) {
-    	System.out.println(ex.getMessage());
-    }
-    //inicializar();
-    //FacesUtils.addInfoMessage("Ha sido eliminado");
-    return ""; 
-  }
-  
-  public String action_edit(ActionEvent evt) {
-      selectedActor = (Actor) (evt.getComponent().getAttributes().get("selectedActor"));
-      System.out.println("--> "+selectedActor.getNombre());
-      //RequestContext context = RequestContext.getCurrentInstance();
-      //context.execute("PF('dlg1').show();");
-      actorService.updateActor(selectedActor);
-      return "";
-  }
-  public String deleteArticle(Actor actor) {
-    actorService.deleteActor(actor);
-    this.setButtonAction("Guardar");
-    this.setEditable(false);
-    info();
-    inicializar();
-    return null;
-  }
+	
 
 
-public String actualizar() {
-  
-  return null;
-}
- 
+	public Actor getActor() {
+		return actor;
+	}
 
-  public static void info() {
-    FacesContext.getCurrentInstance().addMessage(null,
-        new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-            "El registro se ha agregado correctamente."));
-  }
- 
-  /**/
+	public void setActor(Actor actor) {
+		this.actor = actor;
+	}
+	
+	public List<Actor> getArticleList() {
+		return actorService.actorList();
+	}
 
-  public Actor getActor() {
-    return actor;
-  }
+	public List<Actor> getListaActor() {
+		try {
+			if (listaActor == null) {
+				listaActor = actorService.actorList();
+			}
 
-  public void setActor(Actor actor) {
-    this.actor = actor;
-  }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listaActor;
+	}
 
-  public String getButtonAction() {
-    return buttonAction;
-  }
+	public void setListaActor(List<Actor> listaActor) {
+		this.listaActor = listaActor;
+	}
 
-  public void setButtonAction(String buttonAction) {
-    this.buttonAction = buttonAction;
-  }
+	public ActorService getActorService() {
+		return actorService;
+	}
 
-  public boolean isEditable() {
-    return editable;
-  }
+	public void setActorService(ActorService actorService) {
+		this.actorService = actorService;
+	}
 
-  public void setEditable(boolean editable) {
-    this.editable = editable;
-  }
+	public Actor getSelectedActor() {
+		return selectedActor;
+	}
 
-  public List<Actor> getListaActor() {
-    try {
-      if (listaActor == null) {
-        listaActor = actorService.actorList();
-      }
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return listaActor;
-  }
-
-  public void setListaActor(List<Actor> listaActor) {
-    this.listaActor = listaActor;
-  }
-  public ActorService getActorService() {
-    return actorService;
-  }
-  public void setActorService(ActorService actorService) {
-    this.actorService = actorService;
-  }
+	public void setSelectedActor(Actor selectedActor) {
+		this.selectedActor = selectedActor;
+	}
 
 }

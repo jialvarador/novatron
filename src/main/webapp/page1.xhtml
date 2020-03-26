@@ -14,30 +14,40 @@
 		<ui:define name="content">
 
 			<h:form>
-				<p:growl autoUpdate="true" showDetail="true" showSummary="true" />
+				<p:growl id="msg" autoUpdate="true" showDetail="true"
+					showSummary="true" />
 				<p:panel header="Formulario de registro">
-
 					<p:panelGrid columns="2" cellspacing="4" cellpadding="2"
 						styleClass="ui-noborder">
-						<p:outputLabel value="Nombre:" />
+						<p:outputLabel value="Nombre Completo:" />
 						<p:inputText value="#{actorView.actor.nombre}" required="true"
-							requiredMessage="Por favor, No olvides llenar un valor" />
-						<p:outputLabel value="A. Paterno:" />
+							requiredMessage="Por favor, No olvides llenar un valor">
+							<f:validateLength minimum="4" />
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="msg" event="blur" />
+						</p:inputText>
+						<p:outputLabel value="Apellido Paterno:" />
 						<p:inputText value="#{actorView.actor.apellidoPaterno}"
 							required="true"
-							requiredMessage="Por favor, No olvides llenar un valor" />
-						<p:outputLabel value="A. Materno:" />
+							requiredMessage="Por favor, No olvides llenar un valor">
+							<f:validateLength minimum="4" />
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+						</p:inputText>
+						<p:outputLabel value="Apellido Materno:" />
 						<p:inputText value="#{actorView.actor.apellidoPaterno}"
 							required="true"
-							requiredMessage="Por favor, No olvides llenar un valor" />
-						<p:commandButton update="@form,:fm" value="Guardar"
+							requiredMessage="Por favor, No olvides llenar un valor">
+							<f:validateLength minimum="4" />
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+						</p:inputText>
+						<p:commandButton update="@form,:fNewActor" value="Guardar"
 							action="#{actorView.almacenar}" />
 					</p:panelGrid>
 				</p:panel>
 			</h:form>
 
 
-			<h:form id="fm">
+			<h:form id="fNewActor">
 				<p:dataTable id="tbl" value="#{actorView.listaActor}" var="actor"
 					emptyMessage="Por el momento no hay informacion aqui..."
 					style="margin-top:50px;">
@@ -51,14 +61,14 @@
 						<p:outputLabel value="#{actor.apellidoMaterno}" />
 					</p:column>
 					<p:column headerText="Eliminar" style="width:15%;">
-						<p:commandButton id="btnDelete" icon="ui-icon-trash"
-							action="#{actorViewImpl.eliminar(actor)}">
+						<p:commandButton id="btnDelete" icon="ui-icon-trash" update="tbl"
+							action="#{actorView.eliminar(actor)}">
 						</p:commandButton>
 					</p:column>
 					<p:column headerText="Opciones">
 						<p:commandButton id="btnEdit" update=":formDialog"
 							icon="fa fa-fw fa-pencil-square-o" onclick="PF('dlg1').show()"
-							actionListener="#{actorViewImpl.action_edit}">
+							actionListener="#{actorView.action_edit}">
 							<f:attribute name="selectedActor" value="#{actor}" />
 						</p:commandButton>
 					</p:column>
@@ -67,26 +77,24 @@
 
 
 			<p:dialog id="dlg1" draggable="true" widgetVar="dlg1" modal="true"
-				width="500">
+				header="Actualización" width="500">
 				<h:form id="formDialog">
 					<p:panelGrid columns="2" cellspacing="4" cellpadding="2"
 						styleClass="ui-noborder">
 						<p:outputLabel value="Nombre:" />
-						<p:inputText value="#{actorViewImpl.selectedActor.nombre}"
+						<p:inputText value="#{actorView.selectedActor.nombre}"
 							required="true"
 							requiredMessage="Por favor, No olvides llenar un valor" />
 						<p:outputLabel value="A. Paterno:" />
-						<p:inputText
-							value="#{actorViewImpl.selectedActor.apellidoPaterno}"
+						<p:inputText value="#{actorView.selectedActor.apellidoPaterno}"
 							required="true"
 							requiredMessage="Por favor, No olvides llenar un valor" />
 						<p:outputLabel value="A. Materno:" />
-						<p:inputText
-							value="#{actorViewImpl.selectedActor.apellidoPaterno}"
+						<p:inputText value="#{actorView.selectedActor.apellidoPaterno}"
 							required="true"
 							requiredMessage="Por favor, No olvides llenar un valor" />
-						<p:commandButton update="@form,fm" value="Guardar"
-							action="#{actorView.actualizar}" />
+						<p:commandButton update="@form,fNewActor" value="Guardar"
+							oncomplete="PF('dlg1').hide()" action="#{actorView.actualizar}" />
 					</p:panelGrid>
 				</h:form>
 			</p:dialog>
