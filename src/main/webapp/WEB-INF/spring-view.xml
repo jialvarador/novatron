@@ -8,8 +8,8 @@
 
 	<bean id="actorView"
 		class="com.jialvarador.view.impl.ActorViewImpl">
-		<property name="actorService">
-			<ref bean="actorService"/>
+		<property name="autorService">
+			<ref bean="autorService"/>
 		</property>
 	</bean>
 

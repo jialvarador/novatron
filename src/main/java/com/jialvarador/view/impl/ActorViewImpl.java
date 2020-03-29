@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.jialvarador.data.entity.Autor;
+import com.jialvarador.data.service.ActorService;
 import com.jialvarador.data.service.AutorService;
 
 import net.sf.jasperreports.engine.JRDataSource;
@@ -41,6 +42,8 @@ public class ActorViewImpl implements Serializable {
 	@Autowired
 	private AutorService autorService;
 	
+	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -194,6 +197,15 @@ public class ActorViewImpl implements Serializable {
 
 	public void setSelectedActor(Autor selectedActor) {
 		this.selectedActor = selectedActor;
+	}
+
+
+	public AutorService getAutorService() {
+		return autorService;
+	}
+
+	public void setAutorService(AutorService autorService) {
+		this.autorService = autorService;
 	}
 
 }

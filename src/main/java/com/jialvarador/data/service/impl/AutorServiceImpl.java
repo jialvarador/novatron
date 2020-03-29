@@ -14,7 +14,7 @@ public class AutorServiceImpl implements AutorService {
     //@Autowired 
     private AutorDAO autorDAO;
 
-    public void setActorDAO(AutorDAO autorDAO) {
+    public void setAutorDAO(AutorDAO autorDAO) {
         this.autorDAO = autorDAO;
     }
 

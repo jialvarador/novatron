@@ -7,13 +7,20 @@
 
 	<!--Capa de Servicio -->
 
-	<bean id="actorService"
+	<bean id="autorService"
 		class="com.jialvarador.data.service.impl.AutorServiceImpl">
-		<property name="actorDAO">
-			<ref bean="actorDAO" />
+		<property name="autorDAO">
+			<ref bean="autorDAO" />
 		</property>
 	</bean>
 	
+	
+	<bean id="actorService"
+		class="com.jialvarador.data.service.impl.ActorServiceImpl">
+		<property name="actorDao">
+			<ref bean="actorDao" />
+		</property>
+	</bean>
 
 
 </beans>

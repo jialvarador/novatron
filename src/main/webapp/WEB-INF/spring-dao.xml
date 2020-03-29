@@ -6,7 +6,9 @@
 
 	<!-- Capa de persistencia de datos -->
 
-	<bean id="actorDAO" class="com.jialvarador.dao.impl.AutorDAOImpl" />
+	<bean id="autorDAO" class="com.jialvarador.dao.impl.AutorDAOImpl" />
 	
-	
+	<bean id="actorDao" class="com.jialvarador.dao.impl.ActorDaoImpl"/>
+
+
 </beans>
