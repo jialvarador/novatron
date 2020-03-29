@@ -13,25 +13,4 @@
 		</property>
 	</bean>
 
-	<bean id="rolView" class="com.jialvarador.view.impl.RolViewImpl">
-		<property name="rolService">
-			<ref bean="rolService" />
-		</property>
-	</bean>
-
-	<bean id="usuarioView"
-		class="com.jialvarador.view.impl.UsuarioViewImpl">
-		<property name="usuarioService">
-			<ref bean="usuarioService" />
-		</property>
-	</bean>
-
-	<bean id="vehiculoView"
-		class="com.jialvarador.view.impl.VehiculoViewImpl">
-		<property name="vehiculoService">
-			<ref bean="vehiculoService" />
-		</property>
-	</bean>
-
-
 </beans>

@@ -6,12 +6,7 @@
 
 	<!-- Capa de persistencia de datos -->
 
-	<bean id="actorDAO" class="com.jialvarador.dao.impl.ActorDAOImpl" />
-	<bean id="usuarioDAO"
-		class="com.jialvarador.dao.impl.UsuarioDAOImpl"
-		autowire="constructor" />
-	<bean id="vehiculoDAO"
-		class="com.jialvarador.dao.impl.VehiculoDAOImpl" />
-	<bean id="rolDAO" class="com.jialvarador.dao.impl.RolDAOImpl" />
+	<bean id="actorDAO" class="com.jialvarador.dao.impl.AutorDAOImpl" />
+	
 	
 </beans>

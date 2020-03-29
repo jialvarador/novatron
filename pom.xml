@@ -30,6 +30,13 @@
 
 	<dependencies>
 	
+	
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.5.0</version>
+		</dependency>
+	
 	<!-- LOGS log4j2 y SLF4J -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

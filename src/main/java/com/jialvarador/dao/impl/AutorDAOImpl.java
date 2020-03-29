@@ -6,11 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.jialvarador.data.dao.ActorDAO;
-import com.jialvarador.data.entity.Actor;
+import com.jialvarador.data.dao.AutorDAO;
+import com.jialvarador.data.entity.Autor;
 
 @Repository
-public class ActorDAOImpl implements ActorDAO {
+public class AutorDAOImpl implements AutorDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -20,29 +20,29 @@ public class ActorDAOImpl implements ActorDAO {
 	}
 
 	@Override
-	public void addActor(Actor actor) {
-		getSession().save(actor);
+	public void add(Autor autor) {
+		getSession().save(autor);
 	}
 
 	@Override
-	public void updateActor(Actor article) {
+	public void update(Autor article) {
 		getSession().update(article);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Actor> actorList() {
-		return getSession().createQuery("from Actor").list();
+	public List<Autor> actorList() {
+		return getSession().createQuery("from Autor").list();
 	}
 
 	@Override
-	public void deleteActor(Actor actor) {
-		getSession().delete(actor);
+	public void delete(Autor autor) {
+		getSession().delete(autor);
 	}
 
 	@Override
-	public Actor getActorById(int id) {
-		return (Actor) getSession().get(Actor.class, new Integer(id));
+	public Autor getActorById(int id) {
+		return (Autor) getSession().get(Autor.class, new Integer(id));
 	}
 
 }

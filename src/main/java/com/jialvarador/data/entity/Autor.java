@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 @Entity
-public class Actor implements Serializable {
+public class Autor implements Serializable {
 
    
     private static final long serialVersionUID = 1L;
@@ -23,7 +23,7 @@ public class Actor implements Serializable {
     private String actualizacion;
 
   
-    public Actor() {
+    public Autor() {
     }
 
 
@@ -77,12 +77,6 @@ public class Actor implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-      return "Actor [idActor=" + idActor + ", nombre=" + nombre + ", apellidoPaterno="
-          + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", actualizacion="
-          + actualizacion + "]";
-    }
 
 
 }

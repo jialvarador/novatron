@@ -98,9 +98,19 @@
 					</p:panelGrid>
 				</h:form>
 			</p:dialog>
+
+			<h:form>
+				<p:commandButton id="exp" value="Exportar "
+					onsuccess="PF('dlgStatus').hide()" onstart="PF('dlgStatus').show()"
+					action="#{actorView.exportarPDF}" ajax="false" />
+				<p:dialog id="dlgStatus" widgetVar="dlgStatus">
+
+				</p:dialog>
+			</h:form>
+
+
+
 		</ui:define>
-
-
 
 
 		<ui:define name="footer">

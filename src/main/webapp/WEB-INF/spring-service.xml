@@ -8,18 +8,12 @@
 	<!--Capa de Servicio -->
 
 	<bean id="actorService"
-		class="com.jialvarador.data.service.impl.ActorServiceImpl">
+		class="com.jialvarador.data.service.impl.AutorServiceImpl">
 		<property name="actorDAO">
 			<ref bean="actorDAO" />
 		</property>
 	</bean>
-	<bean id="rolService"
-		class="com.jialvarador.data.service.impl.RolServiceImpl" />
-	<bean id="usuarioService"
-		class="com.jialvarador.data.service.impl.UsuarioServiceImpl" />
-	<bean id="vehiculoService"
-		class="com.jialvarador.data.service.impl.VehiculoServiceImpl" />
-
+	
 
 
 </beans>
