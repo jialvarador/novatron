@@ -28,28 +28,8 @@
 		</queryString>
 	</subDataset>
 	<queryString>
-		<![CDATA[select * from Actor]]>
+		<![CDATA[]]>
 	</queryString>
-	<field name="idActor" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="idActor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
-	</field>
-	<field name="actualizacion" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="actualizacion"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
-	</field>
-	<field name="apellidoMaterno" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="apellidoMaterno"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
-	</field>
-	<field name="apellidoPaterno" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="apellidoPaterno"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
-	</field>
-	<field name="nombre" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
-	</field>
 	<title>
 		<band height="136" splitType="Stretch">
 			<image>

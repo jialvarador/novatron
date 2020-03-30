@@ -24,10 +24,14 @@ import javax.persistence.TemporalType;
 public class Category implements java.io.Serializable {
 
 
-  private Byte categoryId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Byte categoryId;
   private String name;
   private Date lastUpdate;
-  private Set<FilmCategory> filmCategories = new HashSet(0);
+  private Set<FilmCategory> filmCategories = new HashSet<FilmCategory>(0);
 
   public Category() {}
 

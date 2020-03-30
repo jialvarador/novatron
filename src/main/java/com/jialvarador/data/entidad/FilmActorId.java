@@ -12,7 +12,11 @@ import javax.persistence.Embeddable;
 public class FilmActorId implements java.io.Serializable {
 
 
-  private short actorId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private short actorId;
   private short filmId;
 
   public FilmActorId() {}

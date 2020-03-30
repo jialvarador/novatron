@@ -22,16 +22,19 @@ import org.sii.core.utility.FacesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.jialvarador.data.entidad.Actor;
+import com.jialvarador.data.entidad.City;
+import com.jialvarador.data.entidad.Country;
+import com.jialvarador.data.entidad.Address;
 import com.jialvarador.data.entity.Autor;
 import com.jialvarador.data.service.ActorService;
 import com.jialvarador.data.service.AutorService;
+import com.jialvarador.data.service.CityService;
 
-import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @ManagedBean
 @SessionScoped
@@ -42,7 +45,26 @@ public class ActorViewImpl implements Serializable {
 	@Autowired
 	private AutorService autorService;
 	
+	@Autowired
+	private ActorService actorService;
 	
+	@Autowired
+	private CityService<City> cityService;
+	
+	
+	
+
+	public CityService<City> getCityService() {
+		return cityService;
+	}
+
+	public void setCityService(CityService<City> cityService) {
+		this.cityService = cityService;
+	}
+
+	public void setActorService(ActorService actorService) {
+		this.actorService = actorService;
+	}
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -58,7 +80,12 @@ public class ActorViewImpl implements Serializable {
 
 	private Autor selectedActor;
 	private Autor autor;
-	private List<Autor> listaActor;
+	private List<Autor> listaAutor;
+	private List<Actor>  listaActor;
+	private List<City> listaCity;
+	private List<Country> listaCountry;
+	private List<Address> listaAddress;
+   
 
 	public ActorViewImpl() {
 		if (autor == null) {
@@ -69,7 +96,10 @@ public class ActorViewImpl implements Serializable {
 	public void inicializar() {
 		autor = new Autor();
 		selectedActor = new Autor();
-		listaActor = autorService.actorList();
+		listaAutor = autorService.actorList();
+		listaActor = actorService.list();
+		listaCity = cityService.list();
+		System.out.println(listaCity.size());
 	}
 
 	
@@ -139,21 +169,7 @@ public class ActorViewImpl implements Serializable {
 	}
 	
 	
-	/**
-	  * Retrieves a JRDataSource from a Hibernate HQL query. 
-	  * This datasource is a Java List wrapper.
-	  * @return
-	  */
-	 @SuppressWarnings("unchecked")
-	 private JRDataSource getDatasource() {
-	  List<Autor> result = autorService.actorList();
-	  // Wrap the collection in a JRBeanCollectionDataSource
-	  // This is one of the collections that Jasper understands
-	  JRDataSource ds = new JRBeanCollectionDataSource(result);
-	  // Return the datasource
-	  return ds;
-	 }
-
+	
 
 	public Autor getActor() {
 		return autor;
@@ -167,19 +183,21 @@ public class ActorViewImpl implements Serializable {
 		return autorService.actorList();
 	}
 
-	public List<Autor> getListaActor() {
-		try {
-			if (listaActor == null) {
-				listaActor = autorService.actorList();
-			}
+	
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public List<Autor> getListaAutor() {
+		return listaAutor;
+	}
+
+	public void setListaAutor(List<Autor> listaAutor) {
+		this.listaAutor = listaAutor;
+	}
+
+	public List<Actor> getListaActor() {
 		return listaActor;
 	}
 
-	public void setListaActor(List<Autor> listaActor) {
+	public void setListaActor(List<Actor> listaActor) {
 		this.listaActor = listaActor;
 	}
 
@@ -206,6 +224,30 @@ public class ActorViewImpl implements Serializable {
 
 	public void setAutorService(AutorService autorService) {
 		this.autorService = autorService;
+	}
+
+	public List<City> getListaCity() {
+		return listaCity;
+	}
+
+	public void setListaCity(List<City> listaCity) {
+		this.listaCity = listaCity;
+	}
+
+	public List<Country> getListaCountry() {
+		return listaCountry;
+	}
+
+	public void setListaCountry(List<Country> listaCountry) {
+		this.listaCountry = listaCountry;
+	}
+
+	public List<Address> getListaAddress() {
+		return listaAddress;
+	}
+
+	public void setListaAddress(List<Address> listaAddress) {
+		this.listaAddress = listaAddress;
 	}
 
 }

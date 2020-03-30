@@ -22,7 +22,11 @@ import javax.persistence.TemporalType;
 public class Language implements java.io.Serializable {
 
 
-  private byte languageId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private byte languageId;
   private String name;
   private Date lastUpdate;
   private Set<Film> filmsForLanguageId = new HashSet<Film>(0);

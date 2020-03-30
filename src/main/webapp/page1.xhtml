@@ -40,7 +40,7 @@
 							<f:validateLength minimum="4" />
 							<f:validateRegex pattern="^[a-zA-Z]+$" />
 						</p:inputText>
-						<p:commandButton update="@form,:fNewActor" value="Guardar"
+						<p:commandButton update="@form,:fNewActor,tab" value="Guardar"
 							action="#{actorView.almacenar}" />
 					</p:panelGrid>
 				</p:panel>
@@ -48,7 +48,7 @@
 
 
 			<h:form id="fNewActor">
-				<p:dataTable id="tbl" value="#{actorView.listaActor}" var="actor"
+				<p:dataTable id="tbl" value="#{actorView.listaAutor}" var="actor" paginator="true" rows="10"
 					emptyMessage="Por el momento no hay informacion aqui..."
 					style="margin-top:50px;">
 					<p:column headerText="Nombre">
@@ -73,6 +73,7 @@
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
+
 			</h:form>
 
 
@@ -108,6 +109,46 @@
 				</p:dialog>
 			</h:form>
 
+
+			<p:tabView id="tab" style="margin-top:50px">
+				<p:tab title="Actor">
+				<p:dataTable id="tbl2" value="#{actorView.listaActor}" var="actor" paginator="true" rows="10" 
+					emptyMessage="Por el momento no hay informacion aqui..."
+					style="margin-top:50px;">
+					<p:column headerText="Folio">
+						<p:outputLabel value="#{actor.actorId}" />
+					</p:column>
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{actor.firstName}" />
+					</p:column>
+					<p:column headerText="Apellidos">
+						<p:outputLabel value="#{actor.lastName}" />
+					</p:column>
+					<p:column headerText="Fecha">
+						<p:outputLabel value="#{actor.lastUpdate}" />
+					</p:column>
+				</p:dataTable>
+				</p:tab>
+				<p:tab title="City">
+				<p:dataTable id="tblCity" value="#{actorView.listaCity}" var="actor" paginator="true" rows="10"
+						emptyMessage="Por el momento no hay informacion aqui..."
+						style="margin-top:50px;">
+						<p:column headerText="Folio">
+							<p:outputLabel value="#{actor.cityId}" />
+						</p:column>
+						
+						<p:column headerText="Folio">
+							<p:outputLabel value="#{actor.city}" />
+						</p:column>
+						
+						<p:column headerText="Folio">
+							<p:outputLabel value="#{actor.lastUpdate}" />
+						</p:column>
+						
+					</p:dataTable>
+				</p:tab>
+
+			</p:tabView>
 
 
 		</ui:define>

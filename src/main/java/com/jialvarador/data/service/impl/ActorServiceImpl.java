@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jialvarador.data.dao.ActorDao;
-import com.jialvarador.data.dao.AutorDAO;
 import com.jialvarador.data.entidad.Actor;
 import com.jialvarador.data.entity.Autor;
 import com.jialvarador.data.service.ActorService;

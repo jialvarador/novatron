@@ -27,7 +27,11 @@ import javax.persistence.TemporalType;
 public class Film implements java.io.Serializable {
 
 
-  private Short filmId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short filmId;
   private Language languageByLanguageId;
   private Language languageByOriginalLanguageId;
   private String title;

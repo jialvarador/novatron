@@ -9,6 +9,8 @@
 	<bean id="autorDAO" class="com.jialvarador.dao.impl.AutorDAOImpl" />
 	
 	<bean id="actorDao" class="com.jialvarador.dao.impl.ActorDaoImpl"/>
+	
+	<bean id="cityDao" class="com.jialvarador.dao.impl.CityDaoImpl" />
 
 
 </beans>

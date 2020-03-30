@@ -24,7 +24,11 @@ import javax.persistence.TemporalType;
 public class Country implements java.io.Serializable {
 
 
-  private Short countryId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short countryId;
   private String country;
   private Date lastUpdate;
   private Set<City> cities = new HashSet<City>(0);
@@ -37,7 +41,7 @@ public class Country implements java.io.Serializable {
     this.lastUpdate = lastUpdate;
   }
 
-  public Country(String country, Date lastUpdate, Set cities) {
+  public Country(String country, Date lastUpdate, Set<City> cities) {
     this.country = country;
     this.lastUpdate = lastUpdate;
     this.cities = cities;

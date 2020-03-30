@@ -24,7 +24,11 @@ import javax.persistence.TemporalType;
 public class Payment implements java.io.Serializable {
 
 
-  private Short paymentId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short paymentId;
   private Customer customer;
   private Rental rental;
   private Staff staff;

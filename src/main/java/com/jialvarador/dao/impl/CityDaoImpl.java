@@ -7,11 +7,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.jialvarador.data.dao.ActorDao;
-import com.jialvarador.data.entidad.Actor;
+import com.jialvarador.data.dao.CityDao;
 
 @Repository
-public class ActorDaoImpl implements ActorDao {
+public class CityDaoImpl<T> implements CityDao<T> {
+	
 	
 	@Autowired
 	SessionFactory sessionFactory;
@@ -22,33 +22,35 @@ public class ActorDaoImpl implements ActorDao {
 
 
 	@Override
-	public void add(Actor actor) {
+	public void add(T t) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void update(Actor actor) {
+	public void update(T t) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Actor> list() {
-		return getSession().createQuery("from Actor").list();
-	}
-
-	@Override
-	public void delete(Actor actor) {
+	public List<T> list() {
 		// TODO Auto-generated method stub
-
+		return getSession().createQuery("from City").list();
 	}
 
 	@Override
-	public Actor getActorById(int id) {
+	public void delete(T t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public T getById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

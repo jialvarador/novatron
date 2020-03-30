@@ -28,7 +28,11 @@ import javax.persistence.UniqueConstraint;
 public class Store implements java.io.Serializable {
 
 
-  private Byte storeId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Byte storeId;
   private Address address;
   private Staff staff;
   private Date lastUpdate;

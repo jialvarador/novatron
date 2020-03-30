@@ -23,7 +23,11 @@ import javax.persistence.TemporalType;
 public class FilmActor implements java.io.Serializable {
 
 
-  private FilmActorId id;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private FilmActorId id;
   private Actor actor;
   private Film film;
   private Date lastUpdate;

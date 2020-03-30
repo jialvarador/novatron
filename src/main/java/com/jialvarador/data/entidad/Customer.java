@@ -26,7 +26,11 @@ import javax.persistence.TemporalType;
 public class Customer implements java.io.Serializable {
 
 
-  private Short customerId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short customerId;
   private Address address;
   private Store store;
   private String firstName;
@@ -52,7 +56,7 @@ public class Customer implements java.io.Serializable {
   }
 
   public Customer(Address address, Store store, String firstName, String lastName, String email,
-      boolean active, Date createDate, Date lastUpdate, Set payments, Set rentals) {
+      boolean active, Date createDate, Date lastUpdate, Set<Payment> payments, Set<Rental> rentals) {
     this.address = address;
     this.store = store;
     this.firstName = firstName;

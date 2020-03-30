@@ -28,7 +28,11 @@ import javax.persistence.UniqueConstraint;
 public class Rental implements java.io.Serializable {
 
 
-  private Integer rentalId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Integer rentalId;
   private Customer customer;
   private Inventory inventory;
   private Staff staff;

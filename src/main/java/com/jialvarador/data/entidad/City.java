@@ -26,7 +26,11 @@ import javax.persistence.TemporalType;
 public class City implements java.io.Serializable {
 
 
-  private Short cityId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short cityId;
   private Country country;
   private String city;
   private Date lastUpdate;

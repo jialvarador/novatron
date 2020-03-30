@@ -15,7 +15,11 @@ import javax.persistence.Table;
 public class FilmText implements java.io.Serializable {
 
 
-  private short filmId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private short filmId;
   private String title;
   private String description;
 

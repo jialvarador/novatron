@@ -26,7 +26,11 @@ import javax.persistence.TemporalType;
 public class Staff implements java.io.Serializable {
 
 
-  private Byte staffId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Byte staffId;
   private Address address;
   private Store store;
   private String firstName;

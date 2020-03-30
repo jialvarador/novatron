@@ -13,38 +13,38 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from Actor]]>
+		<![CDATA[select * from actor]]>
 	</queryString>
-	<field name="idActor" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="idActor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
+	<field name="actor_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="actor_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
 	</field>
-	<field name="actualizacion" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="actualizacion"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
+	<field name="first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
 	</field>
-	<field name="apellidoMaterno" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="apellidoMaterno"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
 	</field>
-	<field name="apellidoPaterno" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="apellidoPaterno"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
-	</field>
-	<field name="nombre" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="Actor"/>
+	<field name="last_update" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="last_update"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
 	</field>
 	<group name="partida">
-		<groupExpression><![CDATA[$F{idActor}]]></groupExpression>
+		<groupExpression><![CDATA[$F{actor_id}]]></groupExpression>
 		<groupHeader>
-			<band height="32" splitType="Immediate">
+			<band height="33" splitType="Immediate">
 				<line>
 					<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="3" y="0" width="1" height="32" uuid="490f34f6-1a29-4a05-8230-c1852d2141be"/>
 				</line>
 				<line>
 					<reportElement stretchType="RelativeToBandHeight" x="572" y="0" width="1" height="32" uuid="23384093-3697-4a32-9f7a-58cd4a29e855"/>
 				</line>
+				<textField>
+					<reportElement x="280" y="6" width="100" height="21" uuid="947bc39d-4f83-4883-892e-fece35992ec8"/>
+					<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 		<groupFooter>
@@ -102,7 +102,7 @@
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
 			</textField>
 			<image onErrorType="Blank">
 				<reportElement key="image-4" x="1" y="2" width="131" height="36" uuid="ea3bacbf-58e7-4f84-9089-a04c7fa62be8"/>

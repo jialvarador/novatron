@@ -26,7 +26,11 @@ import javax.persistence.TemporalType;
 public class Address implements java.io.Serializable {
 
 
-  private Short addressId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short addressId;
   private City city;
   private String address;
   private String address2;

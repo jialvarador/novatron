@@ -22,5 +22,11 @@
 		</property>
 	</bean>
 
+	<bean id="cityService"
+		class="com.jialvarador.data.service.impl.CityServiceImpl">
+		<property name="cityDao">
+		<ref bean="cityDao" />
+		</property>
+	</bean>
 
 </beans>

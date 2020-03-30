@@ -26,7 +26,11 @@ import javax.persistence.TemporalType;
 public class Inventory implements java.io.Serializable {
 
 
-  private Integer inventoryId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Integer inventoryId;
   private Film film;
   private Store store;
   private Date lastUpdate;

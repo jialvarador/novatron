@@ -24,7 +24,11 @@ import javax.persistence.TemporalType;
 public class Actor implements java.io.Serializable {
 
 
-  private Short actorId;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Short actorId;
   private String firstName;
   private String lastName;
   private Date lastUpdate;
